@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\DemoSceneManager.cs" />
     <Compile Include="Assets\GoogleVR\Demos\Scripts\HelloVR\HeadsetDemoManager.cs" />
@@ -171,10 +172,13 @@
     <Compile Include="Assets\Scripts\PlayerObject.cs" />
     <Compile Include="Assets\Scripts\ShipController.cs" />
     <Compile Include="Assets\Scripts\SteeringSpot.cs" />
+    <Compile Include="Assets\Winter Zone Mini 1.0\Scripts\EmitterPositionController.cs" />
+    <Compile Include="Assets\Winter Zone Mini 1.0\Scripts\FXDemoController.cs" />
     <None Include="Assets\SpaceFighter\GlassStainedBumpDistort.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
     <None Include="Assets\Luminaris Starship\Documentation\Readme Luminaris.txt" />
+    <None Include="Assets\Winter Zone Mini 1.0\readme.txt" />
     <None Include="Assets\GoogleVR\Shaders\GvrController.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
     <None Include="Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />

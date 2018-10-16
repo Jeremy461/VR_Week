@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlayerController : NetworkBehaviour
+//public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     public float Speed = 1f;
@@ -21,8 +22,10 @@ public class PlayerController : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void OnUpdate()
+    void Update()
     {
+        Movement();
+        BodyRotation();
     }
 
     public void Movement()
