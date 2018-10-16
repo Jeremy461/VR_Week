@@ -10,7 +10,6 @@ public class PlayerController : NetworkBehaviour
     public Camera FPCamera;
     public float Camera_Sensitivity;
     public float Camera_Smoothing;
-    public Rigidbody _Body;
     public Vector2 SmoothV;
     public Vector2 MouseLook;
 
@@ -19,7 +18,6 @@ public class PlayerController : NetworkBehaviour
     // Use this for initialization
     void Start()
     {
-        _Body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -39,15 +37,16 @@ public class PlayerController : NetworkBehaviour
 
     public void BodyRotation()
     {
-        var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        //var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
-        md = Vector2.Scale(md,  new Vector2(Camera_Sensitivity * Camera_Smoothing, Camera_Sensitivity * Camera_Smoothing));
-        SmoothV.x = Mathf.Lerp(SmoothV.x, md.x, 1f / Camera_Smoothing);
-        SmoothV.y = Mathf.Lerp(SmoothV.y, md.y, 1f / Camera_Smoothing);
-        MouseLook += SmoothV;
+        //md = Vector2.Scale(md,  new Vector2(Camera_Sensitivity * Camera_Smoothing, Camera_Sensitivity * Camera_Smoothing));
+        //SmoothV.x = Mathf.Lerp(SmoothV.x, md.x, 1f / Camera_Smoothing);
+        //SmoothV.y = Mathf.Lerp(SmoothV.y, md.y, 1f / Camera_Smoothing);
+        //MouseLook += SmoothV;
 
-        FPCamera.transform.localRotation = Quaternion.AngleAxis(-MouseLook.y, Vector3.right);
-        transform.localRotation = Quaternion.AngleAxis(MouseLook.x, transform.up);
+        //FPCamera.transform.localRotation = Quaternion.AngleAxis(-MouseLook.y, Vector3.right);
+        //transform.localRotation = Quaternion.AngleAxis(MouseLook.x, transform.up);
+        transform.rotation = FPCamera.transform.localRotation;
     }
 
     public void ShipSteering()
