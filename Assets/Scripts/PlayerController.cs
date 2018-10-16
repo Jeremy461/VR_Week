@@ -11,8 +11,10 @@ public class PlayerController : NetworkBehaviour
     public float Camera_Sensitivity;
     public float Camera_Smoothing;
     public Rigidbody _Body;
-    public Vector2 MousePositionSum;
-    public Vector2 MouseRotation;
+    public Vector2 SmoothV;
+    public Vector2 MouseLook;
+
+    public bool IsStearing;
 
     // Use this for initialization
     void Start()
@@ -31,11 +33,25 @@ public class PlayerController : NetworkBehaviour
         float Translation_Z = Input.GetAxis("Vertical") * Speed;
         Translation_X *= Time.deltaTime;
         Translation_Z *= Time.deltaTime;
+        transform.TransformDirection(Vector3.forward);
         transform.Translate(new Vector3(Translation_X, 0, Translation_Z));
     }
 
     public void BodyRotation()
     {
-        transform.rotation = new Quaternion(0,FPCamera.transform.rotation.y, 0,0);
+        var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+
+        md = Vector2.Scale(md,  new Vector2(Camera_Sensitivity * Camera_Smoothing, Camera_Sensitivity * Camera_Smoothing));
+        SmoothV.x = Mathf.Lerp(SmoothV.x, md.x, 1f / Camera_Smoothing);
+        SmoothV.y = Mathf.Lerp(SmoothV.y, md.y, 1f / Camera_Smoothing);
+        MouseLook += SmoothV;
+
+        FPCamera.transform.localRotation = Quaternion.AngleAxis(-MouseLook.y, Vector3.right);
+        transform.localRotation = Quaternion.AngleAxis(MouseLook.x, transform.up);
+    }
+
+    public void ShipSteering()
+    {
+        
     }
 }
